@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DebugListActivity">
+    <include layout="@layout/layout_title_bar"/>
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/debug_list_tab"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        app:tabSelectedTextColor="#3700B3"
+        app:tabTextColor="#555555"
+        app:tabIndicatorHeight="0dp"
+        app:tabTextAppearance="@style/TabLayoutTextStyle"/>
+    <include layout="@layout/layout_search"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/debug_list_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/adapter_debug_list_item"/>
+</LinearLayout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/adapter_debug_list_layout">
+    <TextView
+        android:id="@+id/adapter_debug_title_tv"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="10sp"
+        android:textColor="#555555"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:gravity="center_vertical"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:text="我是测试我是测试我是测试我我是测试我是测试我是测试我是测试我是测试我是测试我是测试是测试我是测试我是测试我是测试我是测试我是测试我是测试我是测试我是测试我是测试"/>
+    <View
+        android:id="@+id/adapter_debug_line_view"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#f0f0f0"/>
+</FrameLayout>

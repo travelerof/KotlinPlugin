@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LabelView">
+        <attr name="l_horizontalPadding" format="dimension"/>
+        <attr name="l_verticalPadding" format="dimension"/>
+        <attr name="l_verticalMargin" format="dimension"/>
+        <attr name="l_horizontalMargin" format="dimension"/>
+        <attr name="l_background" format="reference"/>
+        <attr name="l_textSize" format="dimension"/>
+        <attr name="l_textColor" format="color"/>
+        <attr name="l_max" format="integer"/>
+    </declare-styleable>
+</resources>

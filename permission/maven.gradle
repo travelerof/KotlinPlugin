@@ -1,0 +1,40 @@
+apply plugin: 'maven-publish'
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = rootProject.ext.permissionAarVersion.groupId
+                artifactId = rootProject.ext.permissionAarVersion.releaseArtifactId
+                version = rootProject.ext.permissionAarVersion.version
+                pom{
+                    name = 'permission'
+                    description = 'permission'
+                }
+            }
+            debug(MavenPublication) {
+                from components.debug
+                groupId = rootProject.ext.permissionAarVersion.groupId
+                artifactId = rootProject.ext.permissionAarVersion.debugArtifactId
+                version = rootProject.ext.permissionAarVersion.version
+            }
+        }
+
+        repositories {
+            maven {
+                //允许http请求
+                allowInsecureProtocol true
+                url project.hasProperty("release") ? rootProject.ext.mavenConfig.url : rootProject.ext.mavenConfig.debugUrl
+                credentials {
+                    username = rootProject.ext.mavenConfig.username
+                    password = rootProject.ext.mavenConfig.password
+                }
+            }
+        }
+    }
+}
+
+
+
+

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="350dp"
+    android:orientation="vertical">
+    <LinearLayout
+        android:id="@+id/calendar_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <include layout="@layout/item_year_container"/>
+        <View
+            android:id="@+id/year_month_line_view"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#555555"/>
+    </LinearLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <com.hyg.widget.calendar.WeekView
+                android:id="@+id/week_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <View
+                android:id="@+id/week_line_view"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#555555"/>
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/calendar_vp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal" />
+        </LinearLayout>
+        <include layout="@layout/item_year_month_choice_layout"/>
+    </FrameLayout>
+
+</LinearLayout>

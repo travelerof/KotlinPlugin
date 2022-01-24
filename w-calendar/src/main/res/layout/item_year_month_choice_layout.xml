@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/year_month_choice_root_layout"
+    android:visibility="gone">
+    <View
+        android:id="@+id/year_month_choice_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#90444444" />
+    <com.hyg.widget.calendar.YearChoiceBgLayout
+        android:id="@+id/year_month_choice_layout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="@dimen/dimen_10"
+        android:layout_marginRight="@dimen/dimen_10"
+        android:layout_marginBottom="@dimen/dimen_10"
+        android:visibility="visible">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/year_month_choice_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+    </com.hyg.widget.calendar.YearChoiceBgLayout>
+</FrameLayout>

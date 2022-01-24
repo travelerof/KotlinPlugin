@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LoadingView">
+        <attr name="s_indicator">
+            <enum name="line_spin" value="0"/>
+            <enum name="ball_spin" value="1"/>
+            <enum name="ball_pulse" value="2"/>
+            <enum name="ball_ripple" value="3"/>
+            <enum name="line_scale" value="4"/>
+            <enum name="line_scale_pulse" value="5"/>
+            <enum name="ball_scale" value="6"/>
+        </attr>
+        <attr name="s_loadColor" format="color"/>
+    </declare-styleable>
+</resources>

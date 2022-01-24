@@ -1,0 +1,36 @@
+apply plugin: 'maven-publish'
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = rootProject.ext.logDataAarVersion.groupId
+                artifactId = rootProject.ext.logDataAarVersion.releaseArtifactId
+                version = rootProject.ext.logDataAarVersion.version
+            }
+            debug(MavenPublication) {
+                from components.debug
+                groupId = rootProject.ext.logDataAarVersion.groupId
+                artifactId = rootProject.ext.logDataAarVersion.debugArtifactId
+                version = rootProject.ext.logDataAarVersion.version
+            }
+        }
+
+        repositories {
+            maven {
+                //允许http请求
+                allowInsecureProtocol true
+                url rootProject.ext.mavenConfig.url
+                credentials {
+                    username = rootProject.ext.mavenConfig.username
+                    password = rootProject.ext.mavenConfig.password
+                }
+            }
+        }
+    }
+}
+
+
+
+

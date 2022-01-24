@@ -1,0 +1,35 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        jcenter() // Warning: this repository is going to shut down soon
+        maven{
+            url 'http://127.0.0.1:8081/repository/maven-public/'
+            credentials {
+                username = 'admin'
+                password = 'admin123'
+            }
+        }
+        maven { url 'https://www.jitpack.io' }
+    }
+}
+rootProject.name = "KotlinPlugin"
+include ':app'
+include ':permission'
+include ':dialog'
+include ':w-shadow'
+include ':w-bottombar'
+include ':w-loading'
+include ':widget'
+include ':customdialog'
+include ':debug-log-core'
+include ':debug-log-data'
+include ':debug-crash'
+include ':debug-log-ui'
+include ':w-label'
+include ':w-calendar'
+include ':record-sound'
+include ':record-video'
+include ':media-play-core'
+include ':video-play-ui'

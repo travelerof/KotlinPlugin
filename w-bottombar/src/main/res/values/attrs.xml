@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomBottomBar">
+        <attr name="underLine" format="boolean"/>
+        <attr name="android:textSize"/>
+        <attr name="selectedTextColor" format="color"/>
+        <attr name="unSelectedTextColor" format="color"/>
+    </declare-styleable>
+</resources>

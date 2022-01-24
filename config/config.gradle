@@ -1,0 +1,55 @@
+ext {
+
+    mavenConfig = [
+            url     : 'http://127.0.0.1:8081/repository/maven-releases/',
+            debugUrl: 'http://127.0.0.1:8081/repository/maven-snapshots/',
+            username: 'admin',
+            password: 'admin123'
+    ]
+
+    //日志打包参数
+    logCoreAarVersion = [
+            groupId          : 'com.hyg.debug',
+            releaseArtifactId: 'log-core',
+            debugArtifactId  : 'log-core-debug',
+            version          : '0.0.2',
+    ]
+
+    logDataAarVersion = [
+            groupId          : 'com.hyg.debug',
+            releaseArtifactId: 'log-data',
+            debugArtifactId  : 'log-data-debug',
+            version          : '0.0.3',
+    ]
+
+    logUiAarVersion = [
+            groupId          : 'com.hyg.debug',
+            releaseArtifactId: 'log-ui',
+            debugArtifactId  : 'log-ui-debug',
+            version          : '0.0.1',
+    ]
+
+    //dialog打包aar参数
+    dialogAarVersion = [
+            groupId          : 'com.hyg.dialog',
+            releaseArtifactId: 'dialog',
+            debugArtifactId  : 'dialog-debug',
+            version          : '0.0.1',
+    ]
+
+    //permission打包aar参数
+    permissionAarVersion = [
+            groupId          : 'com.hyg.permission',
+            releaseArtifactId: 'permission',
+            debugArtifactId  : 'permission-debug',
+            version          : '0.0.1',
+    ]
+
+    //widget-label打包aar参数
+    w_labelAarVersion = [
+            groupId          : 'com.hyg.widget',
+            releaseArtifactId: 'label',
+            debugArtifactId  : 'label-debug',
+            version          : '0.0.1',
+    ]
+}

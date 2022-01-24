@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ShadowLayout">
+
+        <!--是否隐藏左侧阴影-->
+        <attr name="s_shadowHiddenLeft" format="boolean">false</attr>
+        <!--是否隐藏顶侧阴影-->
+        <attr name="s_shadowHiddenTop" format="boolean">false</attr>
+        <!--是否隐藏右侧阴影-->
+        <attr name="s_shadowHiddenRight" format="boolean">false</attr>
+        <!--是否隐藏底侧阴影-->
+        <attr name="s_shadowHiddenBottom" format="boolean">false</attr>
+        <!--阴影圆角-->
+        <attr name="s_shadowRadius" format="dimension" />
+        <!--阴影颜色-->
+        <attr name="s_shadowColor" format="color" />
+        <attr name="s_shadowOffsetX" format="dimension"/>
+        <attr name="s_shadowOffsetY" format="dimension"/>
+        <!--是否隐藏顶部左侧圆角-->
+        <attr name="s_hiddenRadiusTopLeft" format="boolean" />
+        <!--是否隐藏顶部右侧圆角-->
+        <attr name="s_hiddenRadiusTopRight" format="boolean" />
+        <!--是否隐藏底部左侧圆角-->
+        <attr name="s_hiddenRadiusBottomLeft" format="boolean" />
+        <!--是否隐藏底部左侧圆角-->
+        <attr name="s_hiddenRadiusBottomRight" format="boolean" />
+
+    </declare-styleable>
+</resources>

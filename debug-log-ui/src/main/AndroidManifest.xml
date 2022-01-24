@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.hyg.log.ui">
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <application>
+        <activity
+            android:name=".DebugLogInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DebugFileInfoActivity"
+            android:exported="false"
+            android:theme="@style/DebugDefault" />
+        <activity
+            android:name=".DebugListActivity"
+            android:exported="false"
+            android:theme="@style/DebugDefault" />
+    </application>
+
+</manifest>

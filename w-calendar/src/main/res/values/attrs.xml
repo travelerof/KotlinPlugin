@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="WeekView">
+        <attr name="w_childTextSize" format="dimension"/>
+        <attr name="w_childTextColor" format="color"/>
+        <attr name="w_childBackgroundColor" format="color"/>
+        <attr name="w_childMarginLeft" format="dimension"/>
+        <attr name="w_childMarginTop" format="dimension"/>
+        <attr name="w_childMarginRight" format="dimension"/>
+        <attr name="w_childMarginBottom" format="dimension"/>
+    </declare-styleable>
+    <declare-styleable name="CalendarView">
+        <attr name="w_childTextSize"/>
+        <attr name="w_childTextColor"/>
+        <attr name="w_childBackgroundColor"/>
+        <attr name="w_childMarginLeft"/>
+        <attr name="w_childMarginTop"/>
+        <attr name="w_childMarginRight"/>
+        <attr name="w_childMarginBottom"/>
+<!--        <attr name="c_weekType" format="integer">-->
+<!--            <enum name="type1">0</enum>-->
+<!--            <enum name="type2">1</enum>-->
+<!--        </attr>-->
+        <attr name="c_minYear" format="integer"/>
+        <attr name="c_maxYear" format="integer"/>
+    </declare-styleable>
+</resources>
