@@ -21,12 +21,14 @@ class MainActivity : AppCompatActivity() {
     class MainAdapter(private val context: Context):RecyclerView.Adapter<MainAdapter.MainViewHolder>(){
 
         private val data = mutableListOf<MainData>(
+            MainData("permission",PermissionActivity::class.java),
             MainData("dialog",DialogActivity::class.java),
             MainData("shadow",ShadowActivity::class.java),
             MainData("loading",LoadingActivity::class.java),
             MainData("label",LabelActivity::class.java),
             MainData("log",LogActivity::class.java),
             MainData("calendar",CalendarActivity::class.java),
+            MainData("io",FileActivity::class.java),
         )
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
             return MainViewHolder(LayoutInflater.from(context).inflate(R.layout.item_main,parent,false))

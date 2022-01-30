@@ -3,6 +3,7 @@ package com.hyg.io
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
+import java.io.InputStream
 
 /**
  * @Author 韩永刚
@@ -13,6 +14,25 @@ class IOUtils {
 
     companion object {
 
+        @JvmStatic
+        fun write(file:File,bytes:ByteArray){
+            val fos = FileOutputStream(file)
+            fos.write(bytes)
+            fos.flush()
+            fos.close()
+        }
+
+        @JvmStatic
+        fun write(file:File,inputStream: InputStream){
+
+        }
+        /**
+         * 复制文件
+         *
+         * @param sourceFile File 源文件
+         * @param targetFile File 目标文件
+         * @return Boolean
+         */
         @JvmStatic
         fun copyFile(sourceFile: File, targetFile: File): Boolean {
             val input = FileInputStream(sourceFile).channel

@@ -32,7 +32,6 @@ class LogActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_log)
-        LogConfig.initialize(application, true)
         val btnPrint = findViewById<Button>(R.id.log_print_btn)
         val btnClick = findViewById<Button>(R.id.log_click_btn)
         btnPrint.setOnClickListener {
