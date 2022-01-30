@@ -11,4 +11,19 @@
         android:layout_height="wrap_content"
         android:text="dialog"
         android:onClick="commonDialog"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="底部选择"
+        android:onClick="bottomSelectDialog"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="底部公共"
+        android:onClick="bottomCommpnDialog"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="加载dialog"
+        android:onClick="loadingDialog"/>
 </LinearLayout>

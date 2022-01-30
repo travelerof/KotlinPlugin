@@ -1,4 +1,4 @@
-package com.hyg.dialog.base
+package com.hyg.dialog
 
 import android.widget.TextView
 

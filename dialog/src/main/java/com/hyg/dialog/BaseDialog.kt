@@ -1,10 +1,10 @@
-package com.hyg.dialog.base
+package com.hyg.dialog
 
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.view.Gravity
-import com.hyg.dialog.R
+import android.view.WindowManager
 
 /**
  * Package:      com.hyg.dialog
@@ -30,7 +30,7 @@ open class BaseDialog(context:Context,themeId:Int):Dialog(context,themeId) {
             params.x = offSetX()
             params.y = offSetY()
             it.attributes = params
-            it.setWindowAnimations(R.style.CenterAnimation)
+            it.setWindowAnimations(animation())
         }
     }
 
@@ -44,7 +44,7 @@ open class BaseDialog(context:Context,themeId:Int):Dialog(context,themeId) {
 
     open fun width(): Int = 0
 
-    open fun height(): Int = 0
+    open fun height(): Int = WindowManager.LayoutParams.WRAP_CONTENT
 
     open fun alpha():Float = 1.0f
 

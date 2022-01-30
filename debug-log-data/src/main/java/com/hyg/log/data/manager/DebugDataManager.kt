@@ -208,12 +208,12 @@ object DebugDataManager {
             return
         }
         poolExecutor.execute {
-            val file = StorageUtils.getTargetDir(
+            val fileDirectory = StorageUtils.getTargetDir(
                 cacheDir,
                 if (type == DataType.CRASH) CRASH_DIR else LOG_CACHE_DIR
             )
-
-            val text = StorageUtils.read(File(file, filename))
+            val file = File(fileDirectory, filename)
+            val text = StorageUtils.read(file)
             val msg = Message.obtain()
             msg.what = READ_FILE
             msg.obj = ContentModel(file.absolutePath, text)
@@ -350,7 +350,7 @@ object DebugDataManager {
 
     fun copy(sourceFile: File) {
         poolExecutor.execute {
-            val targetFile = File(Environment.getExternalStorageDirectory(),sourceFile.name)
+            val targetFile = File(Environment.getStorageDirectory(),sourceFile.name)
             if (targetFile.exists()) {
                 targetFile.delete()
             }

@@ -1,28 +1,25 @@
-package com.hyg.dialog.base
+package com.hyg.dialog.common
 
 import android.content.Context
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
+import com.hyg.dialog.OnDialogClickListener
 import com.hyg.dialog.R
+import com.hyg.dialog.TextListener
 
 /**
- * Package:      com.hyg.dialog
- * ClassName:    CustomerDialog
- * Author:       hanyonggang
- * Date:         2021/12/23 15:57
- * Description:
- *
+ * @Author 韩永刚
+ * @Date 2022/01/30
+ * @Desc
  */
-class CommonDialog private constructor(context: Context, private val options: CommonOptions) :
-    BaseDialog(context, options.style) {
+class CommonBottomDialog private constructor(context: Context,private val options: DialogOptions):BottomDialog(context) {
 
     private val vh =
-        ViewHolder(LayoutInflater.from(context).inflate(R.layout.dialog_common_layout, null))
+        VHolder(LayoutInflater.from(context).inflate(R.layout.dialog_common_bottom_layout, null))
 
     init {
         initView()
@@ -31,6 +28,7 @@ class CommonDialog private constructor(context: Context, private val options: Co
 
     private fun initView() {
         setContentView(vh.getView())
+        setCancelable(options.cancelable)
         setCanceledOnTouchOutside(options.canOutside)
     }
 
@@ -52,6 +50,7 @@ class CommonDialog private constructor(context: Context, private val options: Co
             options.titleListener?.onText(vh.tvTitle)
             View.VISIBLE
         }
+        vh.titleLine.visibility = if (showTitleLine()) View.VISIBLE else View.GONE
     }
 
 
@@ -72,7 +71,7 @@ class CommonDialog private constructor(context: Context, private val options: Co
     }
 
     private fun initBottomLine() {
-        vh.bottomLineView.visibility = if (showBottomLine()) View.VISIBLE else View.GONE
+        vh.messageLineView.visibility = if (showBottomLine()) View.VISIBLE else View.GONE
     }
 
     private fun initBottom() {
@@ -82,7 +81,6 @@ class CommonDialog private constructor(context: Context, private val options: Co
                 vh.tvNegative.visibility = View.GONE
                 vh.negativeLineView.visibility = View.GONE
                 vh.tvPositive.text = options.positiveText
-                vh.tvPositive.setBackgroundResource(R.drawable.selector_common_dialog_positive_2)
                 options.positiveTextListener?.onText(vh.tvPositive)
                 vh.tvPositive.setOnClickListener {
                     options.positiveClickListener?.onClick(this)
@@ -92,7 +90,6 @@ class CommonDialog private constructor(context: Context, private val options: Co
                 vh.tvNegative.visibility = View.VISIBLE
                 vh.negativeLineView.visibility = View.GONE
                 vh.tvNegative.text = options.negativeText
-                vh.tvNegative.setBackgroundResource(R.drawable.selector_common_dialog_negative_2)
                 options.negativeTextListener?.onText(vh.tvNegative)
                 vh.tvNegative.setOnClickListener {
                     options.negativeClickListener?.onClick(this)
@@ -105,8 +102,6 @@ class CommonDialog private constructor(context: Context, private val options: Co
                 vh.tvPositive.text = options.positiveText
                 options.negativeTextListener?.onText(vh.tvNegative)
                 options.positiveTextListener?.onText(vh.tvPositive)
-                vh.tvNegative.setBackgroundResource(R.drawable.selector_common_dialog_negative_1)
-                vh.tvPositive.setBackgroundResource(R.drawable.selector_common_dialog_positive_1)
                 vh.tvNegative.setOnClickListener {
                     options.negativeClickListener?.onClick(this)
                 }
@@ -116,16 +111,13 @@ class CommonDialog private constructor(context: Context, private val options: Co
             }
             View.VISIBLE
         } else {
-
             View.GONE
         }
     }
 
-    override fun gravity(): Int = options.gravity
-
     override fun width(): Int =
         if (options.width <= 0) {
-            context.resources.displayMetrics.widthPixels / 4 * 3
+            WindowManager.LayoutParams.MATCH_PARENT
         } else options.width
 
     override fun height(): Int =
@@ -151,32 +143,23 @@ class CommonDialog private constructor(context: Context, private val options: Co
     private fun showBottomLine(): Boolean =
         options.hasMessage() && (options.negativeText != "" || options.positiveText != "") && options.showLine
 
-    class ViewHolder(private val view: View) {
-        val tvTitle = view.findViewById<TextView>(R.id.dialog_common_title_tv)
-        val messageLayout = view.findViewById<FrameLayout>(R.id.dialog_common_message_layout)
-        val tvMessage = view.findViewById<TextView>(R.id.dialog_common_message_tv)
-        val bottomLineView = view.findViewById<View>(R.id.dialog_common_bottom_line)
-        val bottomLayout = view.findViewById<LinearLayout>(R.id.dialog_common_bottom_layout)
-        val tvNegative = view.findViewById<TextView>(R.id.dialog_common_bottom_negative_tv)
-        val negativeLineView = view.findViewById<View>(R.id.dialog_common_bottom_negative_line_view)
-        val tvPositive = view.findViewById<TextView>(R.id.dialog_common_bottom_positive_tv)
+    class VHolder(private val view: View) {
+        val tvTitle = view.findViewById<TextView>(R.id.dialog_common_bottom_title_tv)
+        val titleLine = view.findViewById<View>(R.id.dialog_common_bottom_title_line)
+        val messageLayout = view.findViewById<FrameLayout>(R.id.dialog_common_bottom_message_layout)
+        val tvMessage = view.findViewById<TextView>(R.id.dialog_common_bottom_message_tv)
+        val messageLineView = view.findViewById<View>(R.id.dialog_common_bottom_message_line)
+        val bottomLayout = view.findViewById<LinearLayout>(R.id.dialog_common_bottom_b_layout)
+        val tvNegative = view.findViewById<TextView>(R.id.dialog_common_bottom_b_negative_tv)
+        val negativeLineView = view.findViewById<View>(R.id.dialog_common_bottom_b_negative_line)
+        val tvPositive = view.findViewById<TextView>(R.id.dialog_common_bottom_b_positive_tv)
 
         fun getView(): View = view
     }
 
     class Builder(private val context: Context) {
 
-        private val options = CommonOptions()
-
-        fun style(style: Int): Builder {
-            options.style = style
-            return this
-        }
-
-        fun animation(animation: Int):Builder{
-            options.windowAnimation = animation
-            return this
-        }
+        private val options = DialogOptions()
 
         fun width(width: Int): Builder {
             options.width = width
@@ -190,11 +173,6 @@ class CommonDialog private constructor(context: Context, private val options: Co
 
         fun alpha(alpha: Float): Builder {
             options.alpha = alpha
-            return this
-        }
-
-        fun gravity(gravity: Int): Builder {
-            options.gravity = gravity
             return this
         }
 
@@ -263,45 +241,6 @@ class CommonDialog private constructor(context: Context, private val options: Co
             return this
         }
 
-        fun create(): CommonDialog = CommonDialog(context, options)
-    }
-
-
-    class CommonOptions {
-        /**
-         * dialog主题
-         */
-        var style: Int = R.style.DefaultDialog
-
-        /**
-         * dialog宽高
-         */
-        var width: Int = 0
-        var height: Int = 0
-
-        /**
-         *
-         */
-        var alpha: Float = 1.0f
-        var gravity: Int = Gravity.CENTER
-        var windowAnimation: Int = R.style.CenterAnimation
-        var canOutside: Boolean = true
-        var title: String = ""
-        var showLine: Boolean = true
-        var message: String = ""
-        var negativeText: String = ""
-        var positiveText: String = ""
-        var contentView: View? = null
-        var titleListener: TextListener? = null
-        var messageListener: TextListener? = null
-        var negativeTextListener: TextListener? = null
-        var positiveTextListener: TextListener? = null
-        var negativeClickListener: OnDialogClickListener? = null
-        var positiveClickListener: OnDialogClickListener? = null
-
-
-        fun hasMessage(): Boolean = message != "" || contentView != null
-
-        fun hasBottomButton(): Boolean = negativeText != "" || positiveText != ""
+        fun create(): CommonBottomDialog = CommonBottomDialog(context, options)
     }
 }

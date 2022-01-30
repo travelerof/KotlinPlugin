@@ -27,9 +27,7 @@ class LoadingView(context: Context, attrs: AttributeSet?, defStyleAttr: Int) :
 
     init {
         initAttrs(attrs)
-        draw = IndicatorFactory.create(indicatorId,this)
-        draw.initPaint().color = color
-
+        initIndicatorDraw()
     }
 
     private fun initAttrs(attrs: AttributeSet?){
@@ -40,6 +38,11 @@ class LoadingView(context: Context, attrs: AttributeSet?, defStyleAttr: Int) :
         }finally {
             array.recycle()
         }
+    }
+
+    private fun initIndicatorDraw(){
+        draw = IndicatorFactory.create(indicatorId,this)
+        draw.initPaint().color = color
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -90,6 +93,13 @@ class LoadingView(context: Context, attrs: AttributeSet?, defStyleAttr: Int) :
         draw.stop()
     }
 
+    fun setIndicatorId(@IndicatorId indicatorId:Int){
+        this.indicatorId = indicatorId
+        draw = IndicatorFactory.create(indicatorId,this)
+        draw.initPaint().color = color
+        start()
+
+    }
     override fun isRunning(): Boolean {
         return false
     }

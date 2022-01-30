@@ -1,4 +1,4 @@
-package com.hyg.dialog.base
+package com.hyg.dialog
 
 /**
  * Package:      com.hyg.dialog.base
@@ -10,5 +10,5 @@ package com.hyg.dialog.base
  */
 interface OnDialogClickListener {
 
-    fun onClick(dialog:BaseDialog)
+    fun onClick(dialog: BaseDialog)
 }

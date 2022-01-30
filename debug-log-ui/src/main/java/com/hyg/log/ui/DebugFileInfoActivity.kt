@@ -7,10 +7,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.hyg.dialog.base.BaseDialog
-import com.hyg.dialog.base.CommonDialog
-import com.hyg.dialog.base.OnDialogClickListener
-import com.hyg.dialog.base.TextListener
+import com.hyg.dialog.BaseDialog
+import com.hyg.dialog.common.CommonDialog
+import com.hyg.dialog.OnDialogClickListener
+import com.hyg.dialog.TextListener
 import com.hyg.log.data.DataType
 import com.hyg.log.data.ReadFileCallback
 import com.hyg.log.data.manager.DebugDataManager

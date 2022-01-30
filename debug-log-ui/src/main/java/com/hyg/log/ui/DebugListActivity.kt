@@ -11,10 +11,10 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
-import com.hyg.dialog.base.BaseDialog
-import com.hyg.dialog.base.CommonDialog
-import com.hyg.dialog.base.OnDialogClickListener
-import com.hyg.dialog.base.TextListener
+import com.hyg.dialog.BaseDialog
+import com.hyg.dialog.common.CommonDialog
+import com.hyg.dialog.OnDialogClickListener
+import com.hyg.dialog.TextListener
 import com.hyg.log.data.DataType
 import com.hyg.log.data.OnLogChangedListener
 import com.hyg.log.data.manager.DebugDataManager
@@ -160,17 +160,17 @@ class DebugListActivity : AppCompatActivity() {
             else -> "是否清空在线日志?"
         }
         CommonDialog.Builder(this)
-            .message(message,object :TextListener{
+            .message(message,object : TextListener {
                 override fun onText(text: TextView) {
                     text.gravity = Gravity.CENTER
                 }
             })
-            .negative("取消",object :OnDialogClickListener{
+            .negative("取消",object : OnDialogClickListener {
                 override fun onClick(dialog: BaseDialog) {
                     dialog.dismiss()
                 }
             })
-            .positive("清空",object :OnDialogClickListener{
+            .positive("清空",object : OnDialogClickListener {
                 override fun onClick(dialog: BaseDialog) {
                     dialog.dismiss()
                     DebugDataManager.clear(currentTabType)
