@@ -2,9 +2,7 @@ package com.hyg.widget.loading.indicator
 
 import android.animation.ValueAnimator
 import android.graphics.Canvas
-import android.graphics.Point
 import android.graphics.PointF
-import kotlin.math.min
 
 /**
  * Package:      com.hyg.widget.loading.indicator

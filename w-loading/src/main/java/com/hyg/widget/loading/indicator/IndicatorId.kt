@@ -18,7 +18,8 @@ import androidx.annotation.IntDef
     IndicatorId.BALL_RIPPLE,
     IndicatorId.LINE_SCALE,
     IndicatorId.LINE_SCALE_PULSE,
-    IndicatorId.BALL_SCALE
+    IndicatorId.BALL_SCALE,
+    IndicatorId.BALL_RECT
 )
 annotation class IndicatorId {
     companion object {
@@ -29,5 +30,6 @@ annotation class IndicatorId {
         const val LINE_SCALE = 4
         const val LINE_SCALE_PULSE = 5
         const val BALL_SCALE = 6
+        const val BALL_RECT = 7
     }
 }
